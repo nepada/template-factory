@@ -1,0 +1,40 @@
+{
+    "name": "nepada/template-factory",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "description": "Latte powered template factory on steroids.",
+    "keywords": ["nette", "latte", "template"],
+    "support": {
+        "email": "petr@pada.cz",
+        "issues": "https://github.com/nepada/template-factory/issues"
+    },
+    "authors": [
+        {
+            "name": "Petr Morávek",
+            "email": "petr@pada.cz"
+        }
+    ],
+    "require": {
+        "php": ">= 5.6.0",
+        "latte/latte": "~2.2@dev",
+        "nette/application": "~2.3@dev"
+    },
+    "require-dev": {
+        "nette/tester": "~1.6",
+        "nette/bootstrap": "~2.3@dev",
+        "nette/di": "~2.3@dev",
+        "nette/http": "~2.3@dev",
+        "tracy/tracy": "~2.3@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nepada\\Bridges\\": "src/Bridges/",
+            "Nepada\\TemplateFactory\\": "src/TemplateFactory/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
