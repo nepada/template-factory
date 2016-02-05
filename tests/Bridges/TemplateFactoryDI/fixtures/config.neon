@@ -1,0 +1,24 @@
+extensions:
+    templateFactory: Nepada\Bridges\TemplateFactoryDI\TemplateFactoryExtension
+
+templateFactory:
+    filters:
+        lower: Nette\Utils\Strings::firstLower
+    parameters:
+        foo: bar
+
+services:
+    mockTranslator: NepadaTests\Bridges\TemplateFactoryDI\MockTranslator
+    fooConfigurator: NepadaTests\Bridges\TemplateFactoryDI\FooConfigurator
+
+    templateFactory.templateFactory:
+        setup:
+            - '?->onCreateTemplate[] = ?'(@self, [@fooConfigurator, callback])
+
+    templateFactory.templateConfigurator:
+        setup:
+            - addFilter(upper, Nette\Utils\Strings::firstUpper)
+            - addParameter(application, @application.application)
+
+application:
+    scanDirs: false
