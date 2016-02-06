@@ -68,7 +68,8 @@ services:
 Some extensions may need to install a Latte filter, or inject a parameter / service into template. This can be done in `beforeCompile()` phase by customizing setup of `TemplateConfigurator`.
 
 ```php
-$containerBuilder->getByType(Nepada\TemplateFactory\TemplateConfigurator::class)
+$templateConfigurator = $containerBuilder->getByType(Nepada\TemplateFactory\TemplateConfigurator::class);
+$containerBuilder->getDefinition($templateConfigurator)
     ->addSetup('addFilter', ['filterName', $callback])
     ->addSetup('addParameter', ['parameter', $value])
     ->addSetup('addParameter', ['parameter', '@someService']);
