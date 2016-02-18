@@ -23,18 +23,6 @@ class TemplateConfigurator extends Nette\Object
 
 
     /**
-     * @param array $parameters
-     * @param callable[] $filters
-     * @param Nette\Localization\ITranslator $translator
-     */
-    public function __construct(array $parameters, array $filters, Nette\Localization\ITranslator $translator = null)
-    {
-        $this->parameters = $parameters;
-        $this->filters = $filters;
-        $this->translator = $translator;
-    }
-
-    /**
      * @param Nette\Localization\ITranslator $translator
      * @return self
      */
