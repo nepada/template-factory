@@ -3,7 +3,7 @@ extensions:
 
 templateFactory:
     filters:
-        lower: Nette\Utils\Strings::firstLower
+        lower: NepadaTests\Bridges\TemplateFactoryDI\Filters::lower
     parameters:
         foo: bar
 
@@ -17,7 +17,7 @@ services:
 
     templateFactory.templateConfigurator:
         setup:
-            - addFilter(upper, Nette\Utils\Strings::firstUpper)
+            - addFilter(upper, NepadaTests\Bridges\TemplateFactoryDI\Filters::upper)
             - addParameter(application, @application.application)
 
 application:

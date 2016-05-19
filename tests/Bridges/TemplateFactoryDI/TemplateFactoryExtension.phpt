@@ -47,16 +47,29 @@ class TemplateFactoryExtensionTest extends Tester\TestCase
         Assert::same('bar', $template->foo);
         Assert::same($this->container->getService('application.application'), $template->application);
 
-        // filters
-        $filters = $template->getLatte()->getFilters();
-        Assert::same('Nette\Utils\Strings::firstLower', $filters['lower']);
-        Assert::same('Nette\Utils\Strings::firstUpper', $filters['upper']);
-
-        // translator
-        Assert::same('translated message', call_user_func($filters['translate'], 'test'));
-
         // onCreateTemplate event
         Assert::same($template, $this->container->getByType(FooConfigurator::class)->template);
+
+        $latte = $template->getLatte();
+
+        if (!method_exists($latte, 'invokeFilter')) { // Latte 2.2
+            $filters = $latte->getFilters();
+
+            // filters
+            Assert::same('lower filter', call_user_func($filters['lower']));
+            Assert::same('upper filter', call_user_func($filters['upper']));
+
+            // translator
+            Assert::same('translated message', call_user_func($filters['translate'], 'message'));
+
+        } else {
+            // filters
+            Assert::same('lower filter', $latte->invokeFilter('lower', []));
+            Assert::same('upper filter', $latte->invokeFilter('upper', []));
+
+            // translator
+            Assert::same('translated message', $latte->invokeFilter('translate', ['message']));
+        }
     }
 
 }
@@ -82,6 +95,22 @@ class FooConfigurator
     public function callback($template)
     {
         $this->template = $template;
+    }
+
+}
+
+
+class Filters
+{
+
+    public static function lower()
+    {
+        return 'lower filter';
+    }
+
+    public static function upper()
+    {
+        return 'upper filter';
     }
 
 }
