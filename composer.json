@@ -17,8 +17,8 @@
     "require": {
         "php": ">= 5.6.0",
         "nette/utils": "^2.2@dev",
-        "latte/latte": "^2.2@dev",
-        "nette/application": "^2.3@dev"
+        "latte/latte": "^2.4@dev",
+        "nette/application": "^2.4@dev"
     },
     "require-dev": {
         "nette/tester": "^1.6",
@@ -27,7 +27,7 @@
         "nette/http": "^2.3@dev",
         "tracy/tracy": "^2.3@dev",
 
-        "nette/component-model": "^2.2@dev",
+        "nette/component-model": "^2.3@dev",
         "nette/reflection": "^2.2@dev",
         "nette/neon": "^2.2@dev",
         "nette/php-generator": "^2.2@dev",
