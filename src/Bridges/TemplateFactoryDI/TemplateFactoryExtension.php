@@ -16,6 +16,7 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
     /** @var array */
     public $defaults = [
         'parameters' => [],
+        'providers' => [],
         'filters' => [],
     ];
 
@@ -47,6 +48,10 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
 
         foreach ($this->config['parameters'] as $name => $value) {
             $templateConfigurator->addSetup('addParameter', [$name, $value]);
+        }
+
+        foreach ($this->config['providers'] as $name => $value) {
+            $templateConfigurator->addSetup('addProvider', [$name, $value]);
         }
 
         foreach ($this->config['filters'] as $name => $filter) {

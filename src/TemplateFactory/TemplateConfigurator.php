@@ -15,6 +15,9 @@ class TemplateConfigurator extends Nette\Object
     /** @var array */
     private $parameters;
 
+    /** @var array */
+    private $providers;
+
     /** @var callable[] */
     private $filters;
 
@@ -45,6 +48,17 @@ class TemplateConfigurator extends Nette\Object
 
     /**
      * @param string $name
+     * @param mixed $value
+     * @return self
+     */
+    public function addProvider($name, $value)
+    {
+        $this->providers[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * @param string $name
      * @param callable $filter
      * @return self
      */
@@ -63,8 +77,14 @@ class TemplateConfigurator extends Nette\Object
             return;
         }
 
+        $latte = $template->getLatte();
+
         if ($this->translator) {
             $template->setTranslator($this->translator);
+        }
+
+        foreach ($this->providers as $name => $provider) {
+            $latte->addProvider($name, $provider);
         }
 
         foreach ($this->filters as $name => $filter) {

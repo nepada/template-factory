@@ -52,6 +52,18 @@ templateFactory:
         containerParam: %param%
 ```
 
+### Template providers
+
+Latte 2.4 has improved support for global/system parameters in templates - they are called "providers". You can set them similarly to parameters:
+
+```yaml
+templateFactory:
+    providers:
+        foo: bar
+        service: @anotherService
+        containerParam: %param%
+```
+
 ### Advanced template configuration
 
 If you need to do something a bit more complex with every created template, make use of `onCreateTemplate` event of `TemplateFactory`:
@@ -71,6 +83,7 @@ Some extensions may need to install a Latte filter, or inject a parameter / serv
 $templateConfigurator = $containerBuilder->getByType(Nepada\TemplateFactory\TemplateConfigurator::class);
 $containerBuilder->getDefinition($templateConfigurator)
     ->addSetup('addFilter', ['filterName', $callback])
+    ->addSetup('addProvider', ['provider', $value])
     ->addSetup('addParameter', ['parameter', $value])
     ->addSetup('addParameter', ['parameter', '@someService']);
 ```

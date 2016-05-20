@@ -4,6 +4,8 @@ extensions:
 templateFactory:
     filters:
         lower: NepadaTests\Bridges\TemplateFactoryDI\Filters::lower
+    providers:
+        fooProvider: bar
     parameters:
         foo: bar
 
@@ -18,6 +20,7 @@ services:
     templateFactory.templateConfigurator:
         setup:
             - addFilter(upper, NepadaTests\Bridges\TemplateFactoryDI\Filters::upper)
+            - addProvider(applicationProvider, @application.application)
             - addParameter(application, @application.application)
 
 application:
