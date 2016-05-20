@@ -10,8 +10,10 @@ use Nette;
 use Nette\Application\UI;
 
 
-class TemplateFactory extends Nette\Object implements UI\ITemplateFactory
+class TemplateFactory implements UI\ITemplateFactory
 {
+
+    use Nette\SmartObject;
 
     /** @var callable[] function(UI\ITemplate $template) */
     public $onCreateTemplate;

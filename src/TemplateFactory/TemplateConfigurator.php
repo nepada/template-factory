@@ -9,8 +9,10 @@ namespace Nepada\TemplateFactory;
 use Nette;
 
 
-class TemplateConfigurator extends Nette\Object
+class TemplateConfigurator
 {
+
+    use Nette\SmartObject;
 
     /** @var array */
     private $parameters;
