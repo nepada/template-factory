@@ -15,13 +15,13 @@ class TemplateConfigurator
     use Nette\SmartObject;
 
     /** @var array */
-    private $parameters;
+    private $parameters = [];
 
     /** @var array */
-    private $providers;
+    private $providers = [];
 
     /** @var callable[] */
-    private $filters;
+    private $filters = [];
 
     /** @var Nette\Localization\ITranslator */
     private $translator;
