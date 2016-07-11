@@ -13,10 +13,10 @@ class TemplateConfigurator extends Nette\Object
 {
 
     /** @var array */
-    private $parameters;
+    private $parameters = [];
 
     /** @var callable[] */
-    private $filters;
+    private $filters = [];
 
     /** @var Nette\Localization\ITranslator */
     private $translator;
