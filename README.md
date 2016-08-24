@@ -1,7 +1,7 @@
 Template Factory
 ================
 
-[![Build Status](https://travis-ci.org/nepada/template-factory.svg?branch=master)](https://travis-ci.org/nepada/template-factory)
+[![Build Status](https://travis-ci.org/nepada/template-factory.svg?branch=1.0.x)](https://travis-ci.org/nepada/template-factory)
 [![Downloads this Month](https://img.shields.io/packagist/dm/nepada/template-factory.svg)](https://packagist.org/packages/nepada/template-factory)
 [![Latest stable](https://img.shields.io/packagist/v/nepada/template-factory.svg)](https://packagist.org/packages/nepada/template-factory)
 
