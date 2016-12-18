@@ -16,6 +16,9 @@ use Tester\Assert;
 
 
 require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/fixtures/Filters.php';
+require_once __DIR__ . '/fixtures/FooConfigurator.php';
+require_once __DIR__ . '/fixtures/MockTranslator.php';
 
 
 class TemplateFactoryExtensionTest extends Tester\TestCase
@@ -72,47 +75,6 @@ class TemplateFactoryExtensionTest extends Tester\TestCase
             // translator
             Assert::same('translated message', $latte->invokeFilter('translate', ['message']));
         }
-    }
-
-}
-
-
-class MockTranslator implements Nette\Localization\ITranslator
-{
-
-    public function translate($message, $count = null)
-    {
-        return 'translated message';
-    }
-
-}
-
-
-class FooConfigurator
-{
-
-    public $template;
-
-
-    public function callback($template)
-    {
-        $this->template = $template;
-    }
-
-}
-
-
-class Filters
-{
-
-    public static function lower()
-    {
-        return 'lower filter';
-    }
-
-    public static function upper()
-    {
-        return 'upper filter';
     }
 
 }

@@ -63,13 +63,13 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
     {
         $latteExtension = $this->compiler->getExtensions(Nette\Bridges\ApplicationDI\LatteExtension::class);
         if (!$latteExtension) {
-            throw new TemplateFactory\InvalidStateException("LatteExtension not found, did you register it in your configuration?");
+            throw new TemplateFactory\InvalidStateException('LatteExtension not found, did you register it in your configuration?');
         }
 
         $container = $this->getContainerBuilder();
         $templateFactory = reset($latteExtension)->prefix('templateFactory');
         if (!$container->hasDefinition($templateFactory)) {
-            throw new TemplateFactory\InvalidStateException("TemplateFactory service from LatteExtension not found. Make sure LatteExtension is loaded before TemplateFactoryExtension.");
+            throw new TemplateFactory\InvalidStateException('TemplateFactory service from LatteExtension not found. Make sure LatteExtension is loaded before TemplateFactoryExtension.');
         }
 
         return $container->getDefinition($templateFactory);
