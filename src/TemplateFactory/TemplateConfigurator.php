@@ -24,7 +24,7 @@ class TemplateConfigurator extends Nette\Object
 
     /**
      * @param Nette\Localization\ITranslator $translator
-     * @return self
+     * @return static
      */
     public function setTranslator(Nette\Localization\ITranslator $translator = null)
     {
@@ -35,7 +35,7 @@ class TemplateConfigurator extends Nette\Object
     /**
      * @param string $name
      * @param mixed $value
-     * @return self
+     * @return static
      */
     public function addParameter($name, $value)
     {
@@ -46,7 +46,7 @@ class TemplateConfigurator extends Nette\Object
     /**
      * @param string $name
      * @param callable $filter
-     * @return self
+     * @return static
      */
     public function addFilter($name, callable $filter)
     {
