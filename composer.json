@@ -22,8 +22,6 @@
     },
     "require-dev": {
         "nette/tester": "^1.6",
-        "jakub-onderka/php-parallel-lint": "^0.9",
-        "nepada/coding-standard": "^2.0.0",
         "nette/bootstrap": "^2.4.1@dev || ^3.0@dev",
         "nette/di": "^2.4.7@dev || ^3.0@dev",
 
