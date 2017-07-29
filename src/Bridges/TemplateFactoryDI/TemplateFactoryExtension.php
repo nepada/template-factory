@@ -4,6 +4,8 @@
  * Copyright (c) 2016 Petr Morávek (petr@pada.cz)
  */
 
+declare(strict_types = 1);
+
 namespace Nepada\Bridges\TemplateFactoryDI;
 
 use Nepada\TemplateFactory;
@@ -13,7 +15,7 @@ use Nette;
 class TemplateFactoryExtension extends Nette\DI\CompilerExtension
 {
 
-    /** @var array */
+    /** @var mixed[] */
     public $defaults = [
         'parameters' => [],
         'providers' => [],
@@ -21,6 +23,9 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
     ];
 
 
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
+     */
     public function loadConfiguration()
     {
         $this->validateConfig($this->defaults);
@@ -42,6 +47,9 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
             );
     }
 
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
+     */
     public function beforeCompile()
     {
         $templateConfigurator = $this->getContainerBuilder()->getDefinition($this->prefix('templateConfigurator'));
@@ -64,7 +72,7 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
      *
      * @return Nette\DI\ServiceDefinition
      */
-    public function getNetteTemplateFactory()
+    public function getNetteTemplateFactory(): Nette\DI\ServiceDefinition
     {
         $latteExtension = $this->compiler->getExtensions(Nette\Bridges\ApplicationDI\LatteExtension::class);
         if (!$latteExtension) {

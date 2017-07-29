@@ -4,6 +4,8 @@
  * Copyright (c) 2016 Petr Morávek (petr@pada.cz)
  */
 
+declare(strict_types = 1);
+
 namespace Nepada\TemplateFactory;
 
 use Nette;
@@ -14,24 +16,24 @@ class TemplateConfigurator
 
     use Nette\SmartObject;
 
-    /** @var array */
+    /** @var mixed[] */
     private $parameters = [];
 
-    /** @var array */
+    /** @var mixed[] */
     private $providers = [];
 
     /** @var callable[] */
     private $filters = [];
 
-    /** @var Nette\Localization\ITranslator */
+    /** @var Nette\Localization\ITranslator|null */
     private $translator;
 
 
     /**
-     * @param Nette\Localization\ITranslator $translator
+     * @param Nette\Localization\ITranslator|null $translator
      * @return static
      */
-    public function setTranslator(Nette\Localization\ITranslator $translator = null)
+    public function setTranslator(?Nette\Localization\ITranslator $translator = null): self
     {
         $this->translator = $translator;
         return $this;
@@ -42,7 +44,7 @@ class TemplateConfigurator
      * @param mixed $value
      * @return static
      */
-    public function addParameter($name, $value)
+    public function addParameter(string $name, $value): self
     {
         $this->parameters[$name] = $value;
         return $this;
@@ -53,7 +55,7 @@ class TemplateConfigurator
      * @param mixed $value
      * @return static
      */
-    public function addProvider($name, $value)
+    public function addProvider(string $name, $value): self
     {
         $this->providers[$name] = $value;
         return $this;
@@ -64,7 +66,7 @@ class TemplateConfigurator
      * @param callable $filter
      * @return static
      */
-    public function addFilter($name, callable $filter)
+    public function addFilter(string $name, callable $filter): self
     {
         $this->filters[$name] = $filter;
         return $this;
@@ -73,7 +75,7 @@ class TemplateConfigurator
     /**
      * @param Nette\Application\UI\ITemplate $template
      */
-    public function configure(Nette\Application\UI\ITemplate $template)
+    public function configure(Nette\Application\UI\ITemplate $template): void
     {
         if (!$template instanceof Nette\Bridges\ApplicationLatte\Template) {
             return;
@@ -81,7 +83,7 @@ class TemplateConfigurator
 
         $latte = $template->getLatte();
 
-        if ($this->translator) {
+        if ($this->translator !== null) {
             $template->setTranslator($this->translator);
         }
 

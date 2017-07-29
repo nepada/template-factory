@@ -4,12 +4,17 @@
  * Copyright (c) 2016 Petr Morávek (petr@pada.cz)
  */
 
+declare(strict_types = 1);
+
 namespace Nepada\TemplateFactory;
 
 use Nette;
 use Nette\Application\UI;
 
 
+/**
+ * @method onCreateTemplate(UI\ITemplate $template): void
+ */
 class TemplateFactory implements UI\ITemplateFactory
 {
 
@@ -31,10 +36,11 @@ class TemplateFactory implements UI\ITemplateFactory
     }
 
     /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
      * @param UI\Control|null $control
      * @return UI\ITemplate
      */
-    public function createTemplate(UI\Control $control = null)
+    public function createTemplate(?UI\Control $control = null)
     {
         $template = $this->baseFactory->createTemplate($control);
         $this->onCreateTemplate($template);

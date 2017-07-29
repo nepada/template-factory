@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "nette/utils": "^2.4.5@dev || ^3.0@dev",
+        "nette/utils": "^2.4.5@dev",
         "latte/latte": "^2.4.1@dev",
         "nette/application": "^2.4@dev"
     },
@@ -44,6 +44,11 @@
         },
         "classmap": [
             "src/TemplateFactory/exceptions.php"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
         ]
     },
     "extra": {

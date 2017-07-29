@@ -4,6 +4,8 @@
  * Copyright (c) 2016 Petr Morávek (petr@pada.cz)
  */
 
+declare(strict_types = 1);
+
 namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Nette;
@@ -12,6 +14,13 @@ use Nette;
 class MockTranslator implements Nette\Localization\ITranslator
 {
 
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
+     * @param string $message
+     * @param int|null $count
+     * @return string
+     */
     public function translate($message, $count = null)
     {
         return 'translated message';

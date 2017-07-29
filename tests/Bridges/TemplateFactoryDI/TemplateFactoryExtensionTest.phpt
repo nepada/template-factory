@@ -6,6 +6,8 @@
  * Copyright (c) 2016 Petr Morávek (petr@pada.cz)
  */
 
+declare(strict_types = 1);
+
 namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Latte\Loaders\StringLoader;
@@ -17,9 +19,6 @@ use Tester\Assert;
 
 
 require_once __DIR__ . '/../../bootstrap.php';
-require_once __DIR__ . '/fixtures/Filters.php';
-require_once __DIR__ . '/fixtures/FooConfigurator.php';
-require_once __DIR__ . '/fixtures/MockTranslator.php';
 
 
 class TemplateFactoryExtensionTest extends Tester\TestCase
@@ -29,22 +28,13 @@ class TemplateFactoryExtensionTest extends Tester\TestCase
     private $container;
 
 
-    public function setUp()
-    {
-        $configurator = new Nette\Configurator;
-        $configurator->setTempDirectory(TEMP_DIR);
-        $configurator->setDebugMode(true);
-        $configurator->addConfig(__DIR__ . '/fixtures/config.neon');
-        $this->container = $configurator->createContainer();
-    }
-
-    public function testServices()
+    public function testServices(): void
     {
         Assert::type(TemplateConfigurator::class, $this->container->getService('templateFactory.templateConfigurator'));
         Assert::type(TemplateFactory::class, $this->container->getService('templateFactory.templateFactory'));
     }
 
-    public function testTemplate()
+    public function testTemplate(): void
     {
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
         $template = $this->container->getByType(Nette\Application\UI\ITemplateFactory::class)->createTemplate();
@@ -70,6 +60,15 @@ class TemplateFactoryExtensionTest extends Tester\TestCase
 
         // translator
         Assert::same('translated message', $latte->invokeFilter('translate', ['message']));
+    }
+
+    protected function setUp(): void
+    {
+        $configurator = new Nette\Configurator;
+        $configurator->setTempDirectory(TEMP_DIR);
+        $configurator->setDebugMode(true);
+        $configurator->addConfig(__DIR__ . '/fixtures/config.neon');
+        $this->container = $configurator->createContainer();
     }
 
 }
