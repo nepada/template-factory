@@ -77,4 +77,4 @@ class TemplateFactoryExtensionTest extends Tester\TestCase
 }
 
 
-\run(new TemplateFactoryExtensionTest());
+(new TemplateFactoryExtensionTest())->run();
