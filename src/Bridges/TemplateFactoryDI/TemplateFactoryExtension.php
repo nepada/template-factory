@@ -23,10 +23,7 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
     ];
 
 
-    /**
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
-     */
-    public function loadConfiguration()
+    public function loadConfiguration(): void
     {
         $this->validateConfig($this->defaults);
         $container = $this->getContainerBuilder();
@@ -47,10 +44,7 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
             );
     }
 
-    /**
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
-     */
-    public function beforeCompile()
+    public function beforeCompile(): void
     {
         $templateConfigurator = $this->getContainerBuilder()->getDefinition($this->prefix('templateConfigurator'));
 
