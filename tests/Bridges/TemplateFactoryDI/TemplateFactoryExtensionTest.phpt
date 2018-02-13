@@ -34,7 +34,7 @@ class TemplateFactoryExtensionTest extends Tester\TestCase
     {
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
         $template = $this->container->getByType(Nette\Application\UI\ITemplateFactory::class)->createTemplate();
-        $template->getLatte()->setLoader(new StringLoader);
+        $template->getLatte()->setLoader(new StringLoader());
 
         // parameters
         Assert::same('bar', $template->foo);
@@ -60,7 +60,7 @@ class TemplateFactoryExtensionTest extends Tester\TestCase
 
     protected function setUp(): void
     {
-        $configurator = new Nette\Configurator;
+        $configurator = new Nette\Configurator();
         $configurator->setTempDirectory(TEMP_DIR);
         $configurator->setDebugMode(true);
         $configurator->addConfig(__DIR__ . '/fixtures/config.neon');
