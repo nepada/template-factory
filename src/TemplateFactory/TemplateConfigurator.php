@@ -5,7 +5,6 @@ namespace Nepada\TemplateFactory;
 
 use Nette;
 
-
 class TemplateConfigurator
 {
 
@@ -22,7 +21,6 @@ class TemplateConfigurator
 
     /** @var Nette\Localization\ITranslator|null */
     private $translator;
-
 
     /**
      * @param Nette\Localization\ITranslator|null $translator

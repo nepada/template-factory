@@ -6,7 +6,6 @@ namespace Nepada\Bridges\TemplateFactoryDI;
 use Nepada\TemplateFactory;
 use Nette;
 
-
 class TemplateFactoryExtension extends Nette\DI\CompilerExtension
 {
 
@@ -16,7 +15,6 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
         'providers' => [],
         'filters' => [],
     ];
-
 
     public function loadConfiguration(): void
     {

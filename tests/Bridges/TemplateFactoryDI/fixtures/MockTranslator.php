@@ -5,7 +5,6 @@ namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Nette;
 
-
 class MockTranslator implements Nette\Localization\ITranslator
 {
 

@@ -5,7 +5,6 @@ namespace Nepada\TemplateFactory;
 
 use RuntimeException;
 
-
 /**
  * Common interface for exceptions
  */

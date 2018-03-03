@@ -6,7 +6,6 @@ namespace Nepada\TemplateFactory;
 use Nette;
 use Nette\Application\UI;
 
-
 /**
  * @method onCreateTemplate(UI\ITemplate $template): void
  */
@@ -20,7 +19,6 @@ class TemplateFactory implements UI\ITemplateFactory
 
     /** @var UI\ITemplateFactory */
     private $baseFactory;
-
 
     public function __construct(UI\ITemplateFactory $baseFactory)
     {

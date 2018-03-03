@@ -5,13 +5,11 @@ namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Nette\Application\UI;
 
-
 class FooConfigurator
 {
 
     /** @var UI\ITemplate|null */
     public $template;
-
 
     public function callback(UI\ITemplate $template): void
     {
