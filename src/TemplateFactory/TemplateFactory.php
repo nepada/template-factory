@@ -22,9 +22,6 @@ class TemplateFactory implements UI\ITemplateFactory
     private $baseFactory;
 
 
-    /**
-     * @param UI\ITemplateFactory $baseFactory
-     */
     public function __construct(UI\ITemplateFactory $baseFactory)
     {
         $this->baseFactory = $baseFactory;

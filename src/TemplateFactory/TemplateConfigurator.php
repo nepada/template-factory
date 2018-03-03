@@ -67,9 +67,6 @@ class TemplateConfigurator
         return $this;
     }
 
-    /**
-     * @param Nette\Application\UI\ITemplate $template
-     */
     public function configure(Nette\Application\UI\ITemplate $template): void
     {
         if (!$template instanceof Nette\Bridges\ApplicationLatte\Template) {

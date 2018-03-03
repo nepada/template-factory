@@ -13,9 +13,6 @@ class FooConfigurator
     public $template;
 
 
-    /**
-     * @param UI\ITemplate $template
-     */
     public function callback(UI\ITemplate $template): void
     {
         $this->template = $template;
