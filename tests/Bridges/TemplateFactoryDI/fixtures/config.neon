@@ -13,9 +13,9 @@ services:
     mockTranslator: NepadaTests\Bridges\TemplateFactoryDI\MockTranslator
     fooConfigurator: NepadaTests\Bridges\TemplateFactoryDI\FooConfigurator
 
-    templateFactory.templateFactory:
+    latte.templateFactory:
         setup:
-            - '?->onCreateTemplate[] = ?'(@self, [@fooConfigurator, callback])
+            - '?->onCreate[] = ?'(@self, [@fooConfigurator, callback])
 
     templateFactory.templateConfigurator:
         setup:

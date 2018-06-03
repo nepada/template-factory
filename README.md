@@ -65,17 +65,6 @@ templateFactory:
         containerParam: %param%
 ```
 
-### Advanced template configuration
-
-If you need to do something a bit more complex with every created template, make use of `onCreateTemplate` event of `TemplateFactory`:
-
-```yaml
-services:
-    templateFactory.templateFactory:
-        setup:
-            - '?->onCreateTemplate[] = ?'(@self, [@customConfigurator, callback])
-```
-
 ### Configuration from another `CompilerExtension`
 
 Some extensions may need to install a Latte filter, or inject a parameter / service into template. This can be done in `beforeCompile()` phase by customizing setup of `TemplateConfigurator`.

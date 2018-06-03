@@ -18,7 +18,7 @@
         "php": ">=7.1.0",
         "nette/utils": "^2.4.5@dev",
         "latte/latte": "^2.4.1@dev",
-        "nette/application": "^2.4@dev"
+        "nette/application": "^2.4.12@dev"
     },
     "require-dev": {
         "nette/tester": "^2.0",
@@ -53,7 +53,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.2-dev"
+            "dev-master": "2.0-dev"
         }
     }
 }

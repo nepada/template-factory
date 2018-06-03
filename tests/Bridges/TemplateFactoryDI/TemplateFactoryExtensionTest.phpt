@@ -5,7 +5,6 @@ namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Latte\Loaders\StringLoader;
 use Nepada\TemplateFactory\TemplateConfigurator;
-use Nepada\TemplateFactory\TemplateFactory;
 use Nette;
 use Tester;
 use Tester\Assert;
@@ -25,7 +24,6 @@ class TemplateFactoryExtensionTest extends Tester\TestCase
     public function testServices(): void
     {
         Assert::type(TemplateConfigurator::class, $this->container->getService('templateFactory.templateConfigurator'));
-        Assert::type(TemplateFactory::class, $this->container->getService('templateFactory.templateFactory'));
     }
 
     public function testTemplate(): void

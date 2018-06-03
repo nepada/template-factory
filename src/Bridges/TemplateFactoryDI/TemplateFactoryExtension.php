@@ -21,20 +21,15 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
         $this->validateConfig($this->defaults);
         $container = $this->getContainerBuilder();
 
-        $templateFactory = $this->getNetteTemplateFactory();
-        $templateFactory->setAutowired(false);
-
         $container->addDefinition($this->prefix('templateConfigurator'))
             ->setClass(TemplateFactory\TemplateConfigurator::class)
             ->addSetup('setTranslator');
 
-        $container->addDefinition($this->prefix('templateFactory'))
-            ->setClass(Nette\Application\UI\ITemplateFactory::class)
-            ->setFactory(TemplateFactory\TemplateFactory::class, [$templateFactory])
-            ->addSetup(
-                '?->onCreateTemplate[] = function ($template) {?->configure($template);}',
-                ['@self', $this->prefix('@templateConfigurator')]
-            );
+        $templateFactory = $this->getNetteTemplateFactory();
+        $templateFactory->addSetup(
+            '?->onCreate[] = function (Nette\Application\UI\ITemplate $template): void {?->configure($template);}',
+            ['@self', $this->prefix('@templateConfigurator')]
+        );
     }
 
     public function beforeCompile(): void
