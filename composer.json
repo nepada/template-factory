@@ -41,10 +41,7 @@
         "psr-4": {
             "Nepada\\Bridges\\": "src/Bridges/",
             "Nepada\\TemplateFactory\\": "src/TemplateFactory/"
-        },
-        "classmap": [
-            "src/TemplateFactory/exceptions.php"
-        ]
+        }
     },
     "autoload-dev": {
         "classmap": [
