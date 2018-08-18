@@ -5,8 +5,8 @@ namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Latte\Loaders\StringLoader;
 use Nepada\TemplateFactory\TemplateConfigurator;
+use NepadaTests\TestCase;
 use Nette;
-use Tester;
 use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
@@ -15,7 +15,7 @@ require_once __DIR__ . '/../../bootstrap.php';
 /**
  * @testCase
  */
-class TemplateFactoryExtensionTest extends Tester\TestCase
+class TemplateFactoryExtensionTest extends TestCase
 {
 
     /** @var Nette\DI\Container */
