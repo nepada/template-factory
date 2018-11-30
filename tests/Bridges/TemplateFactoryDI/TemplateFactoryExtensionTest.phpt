@@ -51,7 +51,7 @@ class TemplateFactoryExtensionTest extends TestCase
         Assert::same('upper filter', $latte->invokeFilter('upper', []));
 
         // translator
-        Assert::same('translated message', $latte->invokeFilter('translate', ['message']));
+        Assert::same(MockTranslatorFactory::TRANSLATED_MESSAGE, $latte->invokeFilter('translate', ['message']));
     }
 
     protected function setUp(): void

@@ -10,12 +10,14 @@ templateFactory:
         foo: bar
 
 services:
-    mockTranslator: NepadaTests\Bridges\TemplateFactoryDI\MockTranslator
+    mockTranslator:
+        type: Nette\Localization\ITranslator
+        factory: NepadaTests\Bridges\TemplateFactoryDI\MockTranslatorFactory::create
     fooConfigurator: NepadaTests\Bridges\TemplateFactoryDI\FooConfigurator
 
     latte.templateFactory:
         setup:
-            - '?->onCreate[] = ?'(@self, [@fooConfigurator, callback])
+            - '$onCreate[]' = [@fooConfigurator, callback]
 
     templateFactory.templateConfigurator:
         setup:

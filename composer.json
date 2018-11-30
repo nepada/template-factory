@@ -22,11 +22,12 @@
     },
     "require-dev": {
         "nette/tester": "^2.1",
+        "mockery/mockery": "^1.2",
         "xificurk/phpstan-shim": "^0.11",
         "jakub-onderka/php-parallel-lint": "^1.0",
         "nepada/coding-standard": "^6.0.0",
         "nette/bootstrap": "^2.4.1@dev || ^3.0@dev",
-        "nette/di": "^2.4.7@dev",
+        "nette/di": "^2.4.10@dev",
 
         "nette/component-model": "^2.3@dev || ^3.0@dev",
         "nette/reflection": "^2.4@dev || ^3.0@dev",

@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace NepadaTests;
 
+use Mockery;
 use Tester;
 
 abstract class TestCase extends Tester\TestCase
@@ -15,6 +16,12 @@ abstract class TestCase extends Tester\TestCase
         }
 
         parent::run();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        Mockery::close();
     }
 
 }
