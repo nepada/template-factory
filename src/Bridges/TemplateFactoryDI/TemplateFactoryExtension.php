@@ -22,13 +22,15 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
         $container = $this->getContainerBuilder();
 
         $container->addDefinition($this->prefix('templateConfigurator'))
-            ->setClass(TemplateFactory\TemplateConfigurator::class)
+            ->setType(TemplateFactory\TemplateConfigurator::class)
             ->addSetup('setTranslator');
     }
 
     public function beforeCompile(): void
     {
         $container = $this->getContainerBuilder();
+        /** @var mixed[] $config */
+        $config = $this->getConfig();
 
         $templateFactory = $container->getDefinitionByType(Nette\Application\UI\ITemplateFactory::class);
         $templateFactory->addSetup(
@@ -38,15 +40,15 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
 
         $templateConfigurator = $container->getDefinition($this->prefix('templateConfigurator'));
 
-        foreach ($this->config['parameters'] as $name => $value) {
+        foreach ($config['parameters'] as $name => $value) {
             $templateConfigurator->addSetup('addParameter', [$name, $value]);
         }
 
-        foreach ($this->config['providers'] as $name => $value) {
+        foreach ($config['providers'] as $name => $value) {
             $templateConfigurator->addSetup('addProvider', [$name, $value]);
         }
 
-        foreach ($this->config['filters'] as $name => $filter) {
+        foreach ($config['filters'] as $name => $filter) {
             $templateConfigurator->addSetup('addFilter', [$name, $filter]);
         }
     }

@@ -13,3 +13,10 @@ parameters:
         uncheckedExceptions:
             - LogicException
             - Nette\InvalidStateException
+
+    ignoreErrors:
+        -
+            message: '#Call to an undefined method Nette\\DI\\Definitions\\Definition::addSetup\(\)#' # it's actually ServiceDefinition, cannot use phpdoc hint because of BC with Nette 2.4
+            path: %currentWorkingDirectory%/src/Bridges/TemplateFactoryDI/TemplateFactoryExtension.php
+
+    reportUnmatchedIgnoredErrors: false # BC with Nette 2.4, see above
