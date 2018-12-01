@@ -25,3 +25,6 @@ services:
 
 application:
     scanDirs: false
+
+di:
+    debugger: false
