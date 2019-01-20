@@ -15,3 +15,11 @@ parameters:
     excludes_analyse:
         - %currentWorkingDirectory%/tests/bootstrap.php
         - %currentWorkingDirectory%/tests/temp/*
+
+    ignoreErrors:
+        -
+            message: '#Parameter \#1 \$message \(string\) of method NepadaTests\\Bridges\\TemplateFactoryDI\\MockTranslator::translate\(\) should be contravariant#' # false positive
+            path: %currentWorkingDirectory%/tests/Bridges/TemplateFactoryDI/fixtures/MockTranslator.php
+        -
+            message: '#Parameter \#2 \$count \(int\|null\) of method NepadaTests\\Bridges\\TemplateFactoryDI\\MockTranslator::translate\(\) should be contravariant#' # false positive
+            path: %currentWorkingDirectory%/tests/Bridges/TemplateFactoryDI/fixtures/MockTranslator.php
