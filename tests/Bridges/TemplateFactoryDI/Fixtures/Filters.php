@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace NepadaTests\Bridges\TemplateFactoryDI;
+namespace NepadaTests\Bridges\TemplateFactoryDI\Fixtures;
 
 class Filters
 {

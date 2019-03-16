@@ -3,7 +3,7 @@ extensions:
 
 templateFactory:
     filters:
-        lower: NepadaTests\Bridges\TemplateFactoryDI\Filters::lower
+        lower: NepadaTests\Bridges\TemplateFactoryDI\Fixtures\Filters::lower
     providers:
         fooProvider: bar
     parameters:
@@ -12,8 +12,8 @@ templateFactory:
 services:
     mockTranslator:
         type: Nette\Localization\ITranslator
-        factory: NepadaTests\Bridges\TemplateFactoryDI\MockTranslatorFactory::create
-    fooConfigurator: NepadaTests\Bridges\TemplateFactoryDI\FooConfigurator
+        factory: NepadaTests\Bridges\TemplateFactoryDI\Fixtures\MockTranslatorFactory::create
+    fooConfigurator: NepadaTests\Bridges\TemplateFactoryDI\Fixtures\FooConfigurator
 
     latte.templateFactory:
         setup:
@@ -21,7 +21,7 @@ services:
 
     templateFactory.templateConfigurator:
         setup:
-            - addFilter(upper, NepadaTests\Bridges\TemplateFactoryDI\Filters::upper)
+            - addFilter(upper, NepadaTests\Bridges\TemplateFactoryDI\Fixtures\Filters::upper)
             - addProvider(applicationProvider, @application.application)
             - addParameter(application, @application.application)
 

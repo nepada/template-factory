@@ -5,6 +5,8 @@ namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Latte\Loaders\StringLoader;
 use Nepada\TemplateFactory\TemplateConfigurator;
+use NepadaTests\Bridges\TemplateFactoryDI\Fixtures\FooConfigurator;
+use NepadaTests\Bridges\TemplateFactoryDI\Fixtures\MockTranslatorFactory;
 use NepadaTests\TestCase;
 use Nette;
 use Tester\Assert;
@@ -59,7 +61,7 @@ class TemplateFactoryExtensionTest extends TestCase
         $configurator = new Nette\Configurator();
         $configurator->setTempDirectory(TEMP_DIR);
         $configurator->setDebugMode(true);
-        $configurator->addConfig(__DIR__ . '/fixtures/config.neon');
+        $configurator->addConfig(__DIR__ . '/Fixtures/config.neon');
         $this->container = $configurator->createContainer();
     }
 
