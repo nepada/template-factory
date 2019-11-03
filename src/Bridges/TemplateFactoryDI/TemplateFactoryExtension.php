@@ -9,16 +9,17 @@ use Nette;
 class TemplateFactoryExtension extends Nette\DI\CompilerExtension
 {
 
-    /** @var mixed[] */
-    public $defaults = [
-        'parameters' => [],
-        'providers' => [],
-        'filters' => [],
-    ];
+    public function getConfigSchema(): Nette\Schema\Schema
+    {
+        return Nette\Schema\Expect::structure([
+            'parameters' => Nette\Schema\Expect::array(),
+            'providers' => Nette\Schema\Expect::array(),
+            'filters' => Nette\Schema\Expect::array()->items('callable'),
+        ]);
+    }
 
     public function loadConfiguration(): void
     {
-        $this->validateConfig($this->defaults);
         $container = $this->getContainerBuilder();
 
         $container->addDefinition($this->prefix('templateConfigurator'))
@@ -29,26 +30,28 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
     public function beforeCompile(): void
     {
         $container = $this->getContainerBuilder();
-        /** @var mixed[] $config */
+        /** @var \stdClass $config */
         $config = $this->getConfig();
 
+        /** @var Nette\DI\ServiceDefinition $templateFactory */
         $templateFactory = $container->getDefinitionByType(Nette\Application\UI\ITemplateFactory::class);
         $templateFactory->addSetup(
             '?->onCreate[] = function (Nette\Application\UI\ITemplate $template): void {?->configure($template);}',
             ['@self', $this->prefix('@templateConfigurator')]
         );
 
+        /** @var Nette\DI\ServiceDefinition $templateConfigurator */
         $templateConfigurator = $container->getDefinition($this->prefix('templateConfigurator'));
 
-        foreach ($config['parameters'] as $name => $value) {
+        foreach ($config->parameters as $name => $value) {
             $templateConfigurator->addSetup('addParameter', [$name, $value]);
         }
 
-        foreach ($config['providers'] as $name => $value) {
+        foreach ($config->providers as $name => $value) {
             $templateConfigurator->addSetup('addProvider', [$name, $value]);
         }
 
-        foreach ($config['filters'] as $name => $filter) {
+        foreach ($config->filters as $name => $filter) {
             $templateConfigurator->addSetup('addFilter', [$name, $filter]);
         }
     }
