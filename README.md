@@ -55,7 +55,7 @@ templateFactory:
 
 ### Template providers
 
-Latte 2.4 has improved support for global/system parameters in templates - they are called "providers". You can set them similarly to parameters:
+Similarly to parameters, you can also set latte providers:
 
 ```yaml
 templateFactory:
