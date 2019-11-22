@@ -67,7 +67,7 @@ class TemplateConfigurator
 
     public function configure(Nette\Application\UI\ITemplate $template): void
     {
-        if (!$template instanceof Nette\Bridges\ApplicationLatte\Template) {
+        if (! $template instanceof Nette\Bridges\ApplicationLatte\Template) {
             return;
         }
 
