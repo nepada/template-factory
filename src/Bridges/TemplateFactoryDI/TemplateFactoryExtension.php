@@ -37,7 +37,7 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
         assert($templateFactory instanceof Nette\DI\ServiceDefinition);
         $templateFactory->addSetup(
             '?->onCreate[] = function (Nette\Application\UI\ITemplate $template): void {?->configure($template);}',
-            ['@self', $this->prefix('@templateConfigurator')]
+            ['@self', $this->prefix('@templateConfigurator')],
         );
 
         $templateConfigurator = $container->getDefinition($this->prefix('templateConfigurator'));
