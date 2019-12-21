@@ -8,8 +8,7 @@ use Nette\Application\UI;
 class FooConfigurator
 {
 
-    /** @var UI\ITemplate|null */
-    public $template;
+    public ?UI\ITemplate $template = null;
 
     public function callback(UI\ITemplate $template): void
     {
