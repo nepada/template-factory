@@ -30,18 +30,18 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
     public function beforeCompile(): void
     {
         $container = $this->getContainerBuilder();
-        /** @var \stdClass $config */
         $config = $this->getConfig();
+        assert($config instanceof \stdClass);
 
-        /** @var Nette\DI\ServiceDefinition $templateFactory */
         $templateFactory = $container->getDefinitionByType(Nette\Application\UI\ITemplateFactory::class);
+        assert($templateFactory instanceof Nette\DI\ServiceDefinition);
         $templateFactory->addSetup(
             '?->onCreate[] = function (Nette\Application\UI\ITemplate $template): void {?->configure($template);}',
             ['@self', $this->prefix('@templateConfigurator')]
         );
 
-        /** @var Nette\DI\ServiceDefinition $templateConfigurator */
         $templateConfigurator = $container->getDefinition($this->prefix('templateConfigurator'));
+        assert($templateConfigurator instanceof Nette\DI\ServiceDefinition);
 
         foreach ($config->parameters as $name => $value) {
             $templateConfigurator->addSetup('addParameter', [$name, $value]);
