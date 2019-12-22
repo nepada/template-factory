@@ -29,8 +29,8 @@ class TemplateFactoryExtensionTest extends TestCase
 
     public function testTemplate(): void
     {
+        /** @var Nette\Bridges\ApplicationLatte\Template $template */
         $template = $this->container->getByType(Nette\Application\UI\ITemplateFactory::class)->createTemplate();
-        assert($template instanceof Nette\Bridges\ApplicationLatte\Template);
         $template->getLatte()->setLoader(new StringLoader());
 
         // parameters
