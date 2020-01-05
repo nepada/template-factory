@@ -5,7 +5,6 @@ namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Latte\Loaders\StringLoader;
 use Nepada\TemplateFactory\TemplateConfigurator;
-use NepadaTests\Bridges\TemplateFactoryDI\Fixtures\FooConfigurator;
 use NepadaTests\Bridges\TemplateFactoryDI\Fixtures\MockTranslatorFactory;
 use NepadaTests\TestCase;
 use Nette;
@@ -41,9 +40,6 @@ class TemplateFactoryExtensionTest extends TestCase
         $latteTemplate = $template->getLatte()->createTemplate('test');
         Assert::same('bar', $latteTemplate->global->fooProvider);
         Assert::same($this->container->getService('application.application'), $latteTemplate->global->applicationProvider);
-
-        // onCreateTemplate event
-        Assert::same($template, $this->container->getByType(FooConfigurator::class)->template);
 
         $latte = $template->getLatte();
 

@@ -13,11 +13,6 @@ services:
     mockTranslator:
         type: Nette\Localization\ITranslator
         factory: NepadaTests\Bridges\TemplateFactoryDI\Fixtures\MockTranslatorFactory::create
-    fooConfigurator: NepadaTests\Bridges\TemplateFactoryDI\Fixtures\FooConfigurator
-
-    latte.templateFactory:
-        setup:
-            - '$onCreate[]' = [@fooConfigurator, callback]
 
     templateFactory.templateConfigurator:
         setup:
