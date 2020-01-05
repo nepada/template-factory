@@ -19,6 +19,9 @@ class TemplateConfigurator
     /** @var callable[] */
     private array $filters = [];
 
+    /** @var callable[] */
+    private array $functions = [];
+
     private ?Nette\Localization\ITranslator $translator = null;
 
     /**
@@ -64,6 +67,17 @@ class TemplateConfigurator
         return $this;
     }
 
+    /**
+     * @param string $name
+     * @param callable $function
+     * @return static
+     */
+    public function addFunction(string $name, callable $function): self
+    {
+        $this->functions[$name] = $function;
+        return $this;
+    }
+
     public function configure(Nette\Application\UI\ITemplate $template): void
     {
         if (! $template instanceof Nette\Bridges\ApplicationLatte\Template) {
@@ -82,6 +96,10 @@ class TemplateConfigurator
 
         foreach ($this->filters as $name => $filter) {
             $template->addFilter($name, $filter);
+        }
+
+        foreach ($this->functions as $name => $function) {
+            $latte->addFunction($name, $function);
         }
 
         $template->setParameters($this->parameters);

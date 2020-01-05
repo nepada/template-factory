@@ -65,6 +65,16 @@ templateFactory:
         containerParam: %param%
 ```
 
+### Custom template functions
+
+Similarly to filters, you can also define callbacks for your custom template functions:
+
+```yaml
+templateFactory:
+    functions:
+        doStuff: [@someService, doStuff]
+```
+
 ### Configuration from another `CompilerExtension`
 
 Some extensions may need to install a Latte filter, or inject a parameter / service into template. This can be done in `beforeCompile()` phase by customizing setup of `TemplateConfigurator`.
@@ -73,6 +83,7 @@ Some extensions may need to install a Latte filter, or inject a parameter / serv
 $templateConfigurator = $containerBuilder->getByType(Nepada\TemplateFactory\TemplateConfigurator::class);
 $containerBuilder->getDefinition($templateConfigurator)
     ->addSetup('addFilter', ['filterName', $callback])
+    ->addSetup('addFunction', ['functionName', $callback])
     ->addSetup('addProvider', ['provider', $value])
     ->addSetup('addParameter', ['parameter', $value])
     ->addSetup('addParameter', ['parameter', '@someService']);

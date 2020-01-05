@@ -15,6 +15,7 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
             'parameters' => Nette\Schema\Expect::array(),
             'providers' => Nette\Schema\Expect::array(),
             'filters' => Nette\Schema\Expect::array()->items('callable'),
+            'functions' => Nette\Schema\Expect::array()->items('callable'),
         ]);
     }
 
@@ -53,6 +54,10 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
 
         foreach ($config->filters as $name => $filter) {
             $templateConfigurator->addSetup('addFilter', [$name, $filter]);
+        }
+
+        foreach ($config->functions as $name => $function) {
+            $templateConfigurator->addSetup('addFunction', [$name, $function]);
         }
     }
 

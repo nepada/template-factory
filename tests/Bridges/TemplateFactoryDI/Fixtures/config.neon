@@ -4,6 +4,8 @@ extensions:
 templateFactory:
     filters:
         lower: NepadaTests\Bridges\TemplateFactoryDI\Fixtures\Filters::lower
+    functions:
+        lower: Nette\Utils\Strings::lower
     providers:
         fooProvider: bar
     parameters:
@@ -17,6 +19,7 @@ services:
     templateFactory.templateConfigurator:
         setup:
             - addFilter(upper, NepadaTests\Bridges\TemplateFactoryDI\Fixtures\Filters::upper)
+            - addFunction(upper, Nette\Utils\Strings::upper)
             - addProvider(applicationProvider, @application.application)
             - addParameter(application, @application.application)
 

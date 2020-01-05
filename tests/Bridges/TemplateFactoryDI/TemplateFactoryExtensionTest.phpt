@@ -49,6 +49,9 @@ class TemplateFactoryExtensionTest extends TestCase
 
         // translator
         Assert::same(MockTranslatorFactory::TRANSLATED_MESSAGE, $latte->invokeFilter('translate', ['message']));
+
+        // functions
+        Assert::same('LOREM ipsum', $template->renderToString('{=upper(Lorem)} {=lower(Ipsum)}'));
     }
 
     protected function setUp(): void
