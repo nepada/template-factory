@@ -102,7 +102,9 @@ class TemplateConfigurator
             $latte->addFunction($name, $function);
         }
 
-        $template->setParameters($this->parameters);
+        foreach ($this->parameters as $name => $value) {
+            $template->$name = $value;
+        }
     }
 
 }
