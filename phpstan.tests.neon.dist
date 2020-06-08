@@ -15,9 +15,5 @@ parameters:
         - php
         - phpt
 
-    autoload_directories:
-        - tests
-
     excludes_analyse:
-        - tests/bootstrap.php
         - tests/temp/*
