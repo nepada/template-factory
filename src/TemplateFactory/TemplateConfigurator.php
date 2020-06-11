@@ -10,16 +10,24 @@ class TemplateConfigurator
 
     use Nette\SmartObject;
 
-    /** @var mixed[] */
+    /**
+     * @var mixed[]
+     */
     private array $parameters = [];
 
-    /** @var mixed[] */
+    /**
+     * @var mixed[]
+     */
     private array $providers = [];
 
-    /** @var callable[] */
+    /**
+     * @var callable[]
+     */
     private array $filters = [];
 
-    /** @var callable[] */
+    /**
+     * @var callable[]
+     */
     private array $functions = [];
 
     private ?Nette\Localization\ITranslator $translator = null;
