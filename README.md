@@ -1,7 +1,7 @@
 Template Factory
 ================
 
-[![Build Status](https://travis-ci.org/nepada/template-factory.svg?branch=master)](https://travis-ci.org/nepada/template-factory)
+[![Build Status](https://github.com/nepada/template-factory/workflows/CI/badge.svg)](https://github.com/nepada/template-factory/actions?query=workflow%3ACI+branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/nepada/template-factory/badge.svg?branch=master)](https://coveralls.io/github/nepada/template-factory?branch=master)
 [![Downloads this Month](https://img.shields.io/packagist/dm/nepada/template-factory.svg)](https://packagist.org/packages/nepada/template-factory)
 [![Latest stable](https://img.shields.io/packagist/v/nepada/template-factory.svg)](https://packagist.org/packages/nepada/template-factory)
