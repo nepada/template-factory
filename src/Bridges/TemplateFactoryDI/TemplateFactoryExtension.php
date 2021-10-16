@@ -5,6 +5,7 @@ namespace Nepada\Bridges\TemplateFactoryDI;
 
 use Nepada\TemplateFactory;
 use Nette;
+use Nette\DI\Definitions\ServiceDefinition;
 
 class TemplateFactoryExtension extends Nette\DI\CompilerExtension
 {
@@ -23,7 +24,7 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
     {
         $container = $this->getContainerBuilder();
 
-        $container->addDefinition($this->prefix('templateConfigurator'))
+        $container->addDefinition($this->prefix('templateConfigurator'), new ServiceDefinition())
             ->setType(TemplateFactory\TemplateConfigurator::class)
             ->addSetup('setTranslator');
     }
@@ -35,14 +36,14 @@ class TemplateFactoryExtension extends Nette\DI\CompilerExtension
         assert($config instanceof \stdClass);
 
         $templateFactory = $container->getDefinitionByType(Nette\Application\UI\ITemplateFactory::class);
-        assert($templateFactory instanceof Nette\DI\ServiceDefinition);
+        assert($templateFactory instanceof ServiceDefinition);
         $templateFactory->addSetup(
             '?->onCreate[] = function (Nette\Application\UI\ITemplate $template): void {?->configure($template);}',
             ['@self', $this->prefix('@templateConfigurator')],
         );
 
         $templateConfigurator = $container->getDefinition($this->prefix('templateConfigurator'));
-        assert($templateConfigurator instanceof Nette\DI\ServiceDefinition);
+        assert($templateConfigurator instanceof ServiceDefinition);
 
         foreach ($config->parameters as $name => $value) {
             $templateConfigurator->addSetup('addParameter', [$name, $value]);
