@@ -5,6 +5,7 @@ namespace NepadaTests\Bridges\TemplateFactoryDI;
 
 use Latte\Loaders\StringLoader;
 use Nepada\TemplateFactory\TemplateConfigurator;
+use NepadaTests\Bridges\TemplateFactoryDI\Fixtures\FooControl;
 use NepadaTests\Bridges\TemplateFactoryDI\Fixtures\MockTranslatorFactory;
 use NepadaTests\Environment;
 use NepadaTests\TestCase;
@@ -29,8 +30,9 @@ class TemplateFactoryExtensionTest extends TestCase
 
     public function testTemplate(): void
     {
+        $control = new FooControl();
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
-        $template = $this->container->getByType(Nette\Application\UI\ITemplateFactory::class)->createTemplate();
+        $template = $this->container->getByType(Nette\Application\UI\ITemplateFactory::class)->createTemplate($control);
         $template->getLatte()->setLoader(new StringLoader());
 
         // parameters
