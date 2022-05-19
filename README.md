@@ -7,6 +7,12 @@ Template Factory
 [![Latest stable](https://img.shields.io/packagist/v/nepada/template-factory.svg)](https://packagist.org/packages/nepada/template-factory)
 
 
+Package abandoned
+-----------------
+
+**This package is considered obsolete and abandoned.** Nette and Latte has evolved a lot since the inception of this package. The functionality of this package can now be replaced by a combination of Latte 3 extensions and `TemplateFactory::$onCreate` callback.
+
+
 Installation
 ------------
 
