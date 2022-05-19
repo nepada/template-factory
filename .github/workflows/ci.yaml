@@ -3,8 +3,6 @@ name: CI
 on:
   push:
   pull_request:
-  schedule:
-    - cron: '0 10 * * 5'
 
 jobs:
   tests:
